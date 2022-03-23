@@ -42,7 +42,7 @@ export default function Index() {
   ));
 
   return (
-    <Container>
+    <Container size={"lg"}>
       <Header height={70} p="md">
         {/* Handle other responsive styles with MediaQuery component or createStyles function */}
         <div style={{ display: "flex", alignItems: "center", height: "100%" }}>
