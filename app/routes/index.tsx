@@ -1,6 +1,16 @@
-import { Anchor, Container, Header, Table, Text } from "@mantine/core";
+import {
+  Anchor,
+  Badge,
+  Container,
+  Header,
+  Popover,
+  Table,
+  Text,
+} from "@mantine/core";
+import { useState } from "react";
 import { useLoaderData } from "remix";
 import { getMergeRequests } from "~/gitlab/merge-requests.server";
+import { MergeRequestLevelMergeRequestApproval } from "~/gitlab/types/merge-request-approval";
 
 export const loader = async () => {
   return getMergeRequests();
@@ -25,6 +35,8 @@ export default function Index() {
         <Anchor href={mr.web_url} target="_blank" rel="noreferrer">
           {mr.title}
         </Anchor>
+
+        <div>{Approvals(mr.approvals)}</div>
       </td>
     </tr>
   ));
@@ -51,5 +63,49 @@ export default function Index() {
         </Table>
       ) : null}
     </Container>
+  );
+}
+
+function Approvals(approval: MergeRequestLevelMergeRequestApproval) {
+  const [opened, setOpened] = useState(false);
+
+  return (
+    <Popover
+      opened={opened}
+      onClose={() => setOpened(false)}
+      position="bottom"
+      placement="center"
+      withArrow
+      trapFocus={false}
+      closeOnEscape={false}
+      transition="pop-top-left"
+      width={260}
+      styles={{ body: { pointerEvents: "none" } }}
+      target={
+        <Badge
+          onMouseEnter={() => {
+            if ((approval.approved_by ?? []).length > 0) {
+              setOpened(true);
+            }
+          }}
+          onMouseLeave={() => setOpened(false)}
+        >
+          {`${approval.approvals_required - approval.approvals_left} / ${
+            approval.approvals_required
+          }`}{" "}
+          ✔
+        </Badge>
+      }
+    >
+      {(approval.approved_by ?? []).length > 0 ? (
+        <div style={{ display: "flex" }}>
+          {(approval.approved_by ?? []).map((approver) => (
+            <Text key={approver.user.id} size="sm">
+              {approver.user.name}
+            </Text>
+          ))}
+        </div>
+      ) : null}
+    </Popover>
   );
 }

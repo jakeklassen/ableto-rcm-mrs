@@ -1,8 +1,12 @@
 import { authors } from "~/config/authors";
 import { MergeRequest } from "./types/merge-request";
+import { MergeRequestLevelMergeRequestApproval } from "./types/merge-request-approval";
 import { Project } from "./types/project";
 
-type MergeRequestWithProject = MergeRequest & { project: Project };
+type MergeRequestWithAdditonalData = MergeRequest & {
+  project: Project;
+  approvals: MergeRequestLevelMergeRequestApproval;
+};
 
 export const getMergeRequests = async () => {
   const privateToken = process.env.GITLAB_PRIVATE_TOKEN;
@@ -25,10 +29,10 @@ export const getMergeRequests = async () => {
       "https://gitlab.com/api/v4/merge_requests?" + params,
     ).then((res) => res.json());
 
-    const authorMergeRequestsWithProject: MergeRequestWithProject[] =
+    const authorMergeRequestsWithProject: MergeRequestWithAdditonalData[] =
       await Promise.all(
         authorMergeRequests.map(
-          async (mergeRequest): Promise<MergeRequestWithProject> => {
+          async (mergeRequest): Promise<MergeRequestWithAdditonalData> => {
             const project: Project = await fetch(
               `https://gitlab.com/api/v4/projects/${mergeRequest.project_id}?` +
                 new URLSearchParams({
@@ -36,7 +40,15 @@ export const getMergeRequests = async () => {
                 }),
             ).then((res) => res.json());
 
-            return { ...mergeRequest, project };
+            const approvals: MergeRequestLevelMergeRequestApproval =
+              await fetch(
+                `https://gitlab.com/api/v4/projects/${mergeRequest.project_id}/merge_requests/${mergeRequest.iid}/approvals?` +
+                  new URLSearchParams({
+                    private_token: privateToken,
+                  }),
+              ).then((res) => res.json());
+
+            return { ...mergeRequest, project, approvals };
           },
         ),
       );
