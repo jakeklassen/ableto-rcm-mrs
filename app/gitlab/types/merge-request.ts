@@ -5,7 +5,7 @@ import { TaskCompletionStatus } from "./task-completion-status";
 import { TimeStats } from "./time-stats";
 import { User } from "./user";
 
-export interface MergeRequest extends Record<string, unknown> {
+export interface MergeRequest {
   id: number;
   iid: number;
   project_id: number;

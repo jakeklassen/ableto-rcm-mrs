@@ -1,4 +1,4 @@
-export interface Namespace extends Record<string, unknown> {
+export interface Namespace {
   id: number;
   name: string;
   path: string;

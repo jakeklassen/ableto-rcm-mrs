@@ -1,4 +1,4 @@
-export interface Milestone extends Record<string, unknown> {
+export interface Milestone {
   id: number;
   iid: number;
   project_id: number;

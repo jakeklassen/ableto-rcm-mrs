@@ -29,14 +29,14 @@ export const getMergeRequests = async () => {
       await Promise.all(
         authorMergeRequests.map(
           async (mergeRequest): Promise<MergeRequestWithProject> => {
-            mergeRequest.project = await fetch(
+            const project: Project = await fetch(
               `https://gitlab.com/api/v4/projects/${mergeRequest.project_id}?` +
                 new URLSearchParams({
                   private_token: privateToken,
                 }),
             ).then((res) => res.json());
 
-            return mergeRequest as MergeRequestWithProject;
+            return { ...mergeRequest, project };
           },
         ),
       );

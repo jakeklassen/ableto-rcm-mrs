@@ -1,6 +1,6 @@
 import { Namespace } from "./namespace";
 
-export interface Project extends Record<string, unknown> {
+export interface Project {
   id: number;
   description?: string;
   default_branch: string;

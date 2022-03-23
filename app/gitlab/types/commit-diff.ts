@@ -1,4 +1,4 @@
-export interface CommitDiff extends Record<string, unknown> {
+export interface CommitDiff {
   diff: string;
   new_path: string;
   old_path: string;
