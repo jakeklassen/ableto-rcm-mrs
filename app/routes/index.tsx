@@ -98,13 +98,13 @@ function Approvals(approval: MergeRequestLevelMergeRequestApproval) {
       }
     >
       {(approval.approved_by ?? []).length > 0 ? (
-        <div style={{ display: "flex" }}>
-          {(approval.approved_by ?? []).map((approver) => (
-            <Text key={approver.user.id} size="sm">
-              {approver.user.name}
-            </Text>
-          ))}
-        </div>
+        <Text size="sm">
+          <div style={{ display: "flex" }}>
+            {(approval.approved_by ?? [])
+              .map((approver) => approver.user.name)
+              .join(", ")}
+          </div>
+        </Text>
       ) : null}
     </Popover>
   );
