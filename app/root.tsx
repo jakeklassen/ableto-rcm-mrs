@@ -2,9 +2,9 @@ import {
   ColorScheme,
   ColorSchemeProvider,
   MantineProvider,
-} from "@mantine/core";
-import { useState } from "react";
-import type { MetaFunction } from "remix";
+} from '@mantine/core';
+import { useState } from 'react';
+import type { MetaFunction } from 'remix';
 import {
   Links,
   LiveReload,
@@ -12,12 +12,12 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-} from "remix";
+} from 'remix';
 
 export const meta: MetaFunction = () => ({
-  charset: "utf-8",
-  title: "AbleTo RCM - MRs",
-  viewport: "width=device-width,initial-scale=1",
+  charset: 'utf-8',
+  title: 'AbleTo RCM - MRs',
+  viewport: 'width=device-width,initial-scale=1',
 });
 
 export default function App() {
@@ -41,9 +41,9 @@ export default function App() {
 }
 
 function MantineTheme({ children }: { children: React.ReactNode }) {
-  const [colorScheme, setColorScheme] = useState<ColorScheme>("dark");
+  const [colorScheme, setColorScheme] = useState<ColorScheme>('dark');
   const toggleColorScheme = (value?: ColorScheme) =>
-    setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));
+    setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'));
 
   return (
     <ColorSchemeProvider
