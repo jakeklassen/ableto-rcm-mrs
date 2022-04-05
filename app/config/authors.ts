@@ -1,5 +1,9 @@
 export const authors = [
   {
+    name: 'Aleksander Koko',
+    gitlabUsername: 'aleksander.koko',
+  },
+  {
     name: 'Dirk Filter',
     gitlabUsername: 'dirk.filter',
   },
