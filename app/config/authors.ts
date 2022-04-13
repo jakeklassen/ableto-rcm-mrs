@@ -4,6 +4,10 @@ export const authors = [
     gitlabUsername: 'aleksander.koko',
   },
   {
+    name: 'David Misterek',
+    gitlabUsername: 'david.misterek',
+  },
+  {
     name: 'Dirk Filter',
     gitlabUsername: 'dirk.filter',
   },
