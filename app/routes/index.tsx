@@ -6,11 +6,11 @@ import {
   Popover,
   Table,
   Text,
-} from "@mantine/core";
-import { useState } from "react";
-import { useLoaderData } from "remix";
-import { getMergeRequests } from "~/gitlab/merge-requests.server";
-import { MergeRequestLevelMergeRequestApproval } from "~/gitlab/types/merge-request-approval";
+} from '@mantine/core';
+import { useLoaderData } from '@remix-run/react';
+import { useState } from 'react';
+import { getMergeRequests } from '~/gitlab/merge-requests.server';
+import type { MergeRequestLevelMergeRequestApproval } from '~/gitlab/types/merge-request-approval';
 
 export const loader = async () => {
   return getMergeRequests();
@@ -42,10 +42,10 @@ export default function Index() {
   ));
 
   return (
-    <Container size={"lg"}>
+    <Container size={'lg'}>
       <Header height={70} p="md">
         {/* Handle other responsive styles with MediaQuery component or createStyles function */}
-        <div style={{ display: "flex", alignItems: "center", height: "100%" }}>
+        <div style={{ display: 'flex', alignItems: 'center', height: '100%' }}>
           <Text>MR UI</Text>
         </div>
       </Header>
@@ -80,7 +80,7 @@ function Approvals(approval: MergeRequestLevelMergeRequestApproval) {
       closeOnEscape={false}
       transition="pop-top-left"
       width={260}
-      styles={{ body: { pointerEvents: "none" } }}
+      styles={{ body: { pointerEvents: 'none' } }}
       target={
         <Badge
           onMouseEnter={() => {
@@ -92,17 +92,17 @@ function Approvals(approval: MergeRequestLevelMergeRequestApproval) {
         >
           {`${approval.approvals_required - approval.approvals_left} / ${
             approval.approvals_required
-          }`}{" "}
+          }`}{' '}
           ✔
         </Badge>
       }
     >
       {(approval.approved_by ?? []).length > 0 ? (
         <Text size="sm">
-          <div style={{ display: "flex" }}>
+          <div style={{ display: 'flex' }}>
             {(approval.approved_by ?? [])
               .map((approver) => approver.user.name)
-              .join(", ")}
+              .join(', ')}
           </div>
         </Text>
       ) : null}

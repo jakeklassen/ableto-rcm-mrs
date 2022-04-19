@@ -1,10 +1,5 @@
-import {
-  ColorScheme,
-  ColorSchemeProvider,
-  MantineProvider,
-} from '@mantine/core';
-import { useState } from 'react';
-import type { MetaFunction } from 'remix';
+import type { ColorScheme } from '@mantine/core';
+import { ColorSchemeProvider, MantineProvider } from '@mantine/core';
 import {
   Links,
   LiveReload,
@@ -12,7 +7,9 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-} from 'remix';
+} from '@remix-run/react';
+import type { MetaFunction } from '@remix-run/react/routeModules';
+import { useState } from 'react';
 
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
