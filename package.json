@@ -13,7 +13,7 @@
     "start": "cross-env NODE_ENV=production netlify dev"
   },
   "dependencies": {
-    "@mantine/core": "^4.1.4",
+    "@mantine/core": "4.1.5",
     "@mantine/hooks": "^4.1.4",
     "@mantine/ssr": "^4.1.4",
     "@netlify/functions": "^0.10.0",
