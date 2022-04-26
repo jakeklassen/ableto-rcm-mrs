@@ -20,6 +20,10 @@ export const authors = [
     gitlabUsername: 'jason.groulx',
   },
   {
+    name: 'Jeremy Kithome',
+    gitlabUsername: 'jeremy.kithome',
+  },
+  {
     name: 'Jerome Hatok',
     gitlabUsername: 'jerome.hatok',
   },
