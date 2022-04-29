@@ -1,9 +1,9 @@
-import { User } from "./user";
+import type { User } from './user';
 
 export interface ApprovedByEntity {
   user: Pick<
     User,
-    "name" | "username" | "id" | "state" | "avatar_url" | "web_url"
+    'name' | 'username' | 'id' | 'state' | 'avatar_url' | 'web_url'
   >;
 }
 

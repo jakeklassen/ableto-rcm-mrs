@@ -1,9 +1,9 @@
-import { CommitDiff } from "./commit-diff";
-import { Milestone } from "./milestone";
-import { Reference } from "./reference";
-import { TaskCompletionStatus } from "./task-completion-status";
-import { TimeStats } from "./time-stats";
-import { User } from "./user";
+import type { CommitDiff } from './commit-diff';
+import type { Milestone } from './milestone';
+import type { Reference } from './reference';
+import type { TaskCompletionStatus } from './task-completion-status';
+import type { TimeStats } from './time-stats';
+import type { User } from './user';
 
 export interface MergeRequest {
   id: number;
@@ -12,7 +12,7 @@ export interface MergeRequest {
   title: string;
   description: string;
   state: string;
-  merged_by: Omit<User, "created_at">;
+  merged_by: Omit<User, 'created_at'>;
   merged_at: string;
   closed_by?: string;
   closed_at?: string;
@@ -22,10 +22,10 @@ export interface MergeRequest {
   source_branch: string;
   upvotes: number;
   downvotes: number;
-  author: Omit<User, "created_at">;
-  assignee: Omit<User, "created_at">;
-  assignees?: Omit<User, "created_at">[];
-  reviewers?: Omit<User, "created_at">[];
+  author: Omit<User, 'created_at'>;
+  assignee: Omit<User, 'created_at'>;
+  assignees?: Omit<User, 'created_at'>[];
+  reviewers?: Omit<User, 'created_at'>[];
   source_project_id: number;
   target_project_id: number;
   labels?: string[];

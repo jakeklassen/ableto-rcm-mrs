@@ -1,4 +1,4 @@
-import { Namespace } from "./namespace";
+import type { Namespace } from './namespace';
 
 export interface Project {
   id: number;
@@ -14,7 +14,7 @@ export interface Project {
   name_with_namespace: string;
   namespace: Pick<
     Namespace,
-    "id" | "name" | "path" | "kind" | "full_path" | "avatar_url" | "web_url"
+    'id' | 'name' | 'path' | 'kind' | 'full_path' | 'avatar_url' | 'web_url'
   >;
   path: string;
   path_with_namespace: string;

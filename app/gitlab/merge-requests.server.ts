@@ -1,7 +1,7 @@
-import { authors } from "~/config/authors";
-import { MergeRequest } from "./types/merge-request";
-import { MergeRequestLevelMergeRequestApproval } from "./types/merge-request-approval";
-import { Project } from "./types/project";
+import { authors } from '~/config/authors';
+import type { MergeRequest } from './types/merge-request';
+import type { MergeRequestLevelMergeRequestApproval } from './types/merge-request-approval';
+import type { Project } from './types/project';
 
 type MergeRequestWithAdditonalData = MergeRequest & {
   project: Project;
@@ -12,7 +12,7 @@ export const getMergeRequests = async () => {
   const privateToken = process.env.GITLAB_PRIVATE_TOKEN;
 
   if (privateToken == null) {
-    throw new Error("GitLab private token not found.");
+    throw new Error('GitLab private token not found.');
   }
 
   const mergeRequests = [];
@@ -21,12 +21,12 @@ export const getMergeRequests = async () => {
     const params = new URLSearchParams({
       private_token: privateToken,
       author_username: author.gitlabUsername,
-      state: "opened",
-      scope: "all",
+      state: 'opened',
+      scope: 'all',
     });
 
     const authorMergeRequests: MergeRequest[] = await fetch(
-      "https://gitlab.com/api/v4/merge_requests?" + params,
+      'https://gitlab.com/api/v4/merge_requests?' + params,
     ).then((res) => res.json());
 
     const authorMergeRequestsWithProject: MergeRequestWithAdditonalData[] =
