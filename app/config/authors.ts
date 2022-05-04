@@ -39,4 +39,8 @@ export const authors = [
     name: 'Tuong Tang',
     gitlabUsername: 'tuong.tang1',
   },
+  {
+    name: 'Zamir Zhurda',
+    gitlabUsername: 'zamir.zhurda2',
+  },
 ];
