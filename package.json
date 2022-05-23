@@ -15,7 +15,7 @@
   "dependencies": {
     "@mantine/core": "4.2.6",
     "@mantine/hooks": "^4.2.2",
-    "@mantine/ssr": "^4.2.2",
+    "@mantine/ssr": "4.2.6",
     "@netlify/functions": "^0.10.0",
     "@remix-run/netlify": "^1.4.3",
     "@remix-run/react": "^1.4.3",
