@@ -13,23 +13,23 @@
     "start": "cross-env NODE_ENV=production netlify dev"
   },
   "dependencies": {
-    "@mantine/core": "^4.2.11",
-    "@mantine/hooks": "^4.2.11",
-    "@mantine/ssr": "^4.2.11",
+    "@mantine/core": "^4.2.12",
+    "@mantine/hooks": "^4.2.12",
+    "@mantine/ssr": "^4.2.12",
     "@netlify/functions": "^1.0.0",
-    "@remix-run/netlify": "1.6.1",
-    "@remix-run/react": "1.6.1",
+    "@remix-run/netlify": "^1.6.3",
+    "@remix-run/react": "^1.6.3",
     "compression": "1.7.4",
     "cross-env": "7.0.3",
     "express": "^4.18.1",
     "morgan": "1.10.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "remix": "1.6.1"
+    "remix": "^1.6.3"
   },
   "devDependencies": {
-    "@remix-run/dev": "1.6.1",
-    "@remix-run/eslint-config": "1.6.1",
+    "@remix-run/dev": "^1.6.3",
+    "@remix-run/eslint-config": "^1.6.3",
     "@types/react": "17.0.47",
     "@types/react-dom": "17.0.17",
     "eslint": "8.19.0",
